@@ -8,7 +8,7 @@ mod map;
 mod rect;
 
 use bow::Bow;
-use map::{new_map_test, TileType, xy_idx, draw_map};
+use map::{new_map_test, new_map_rooms_and_corridors, TileType, xy_idx, draw_map};
 use mover::LeftMover;
 use player::Player;
 use position::Position;
@@ -62,7 +62,7 @@ fn main() -> rltk::BError {
     gs.ecs.register::<Player>();
     gs.ecs.register::<Bow>();
 
-    gs.ecs.insert(new_map());
+    gs.ecs.insert(new_map_rooms_and_corridors());
     
     gs.ecs
         .create_entity()
@@ -90,3 +90,5 @@ fn main() -> rltk::BError {
 
     main_loop(context, gs)
 }
+
+
